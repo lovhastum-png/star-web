@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>星尘考古 - 数据分析游戏介绍</title>
+    <!-- 引入外部资源 -->
+    <script src="https://cdn.tailwindcss.com?v=3.3.0"></script>
+    <link href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600;800&display=swap" rel="stylesheet">
+    
+    <!-- Tailwind配置 -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        space: {
+                            dark: '#0b1a2f',
+                            light: '#1e3a8a',
+                            accent: '#f97316',
+                            glow: '#3b82f6'
+                        }
+                    },
+                    fontFamily: {
+                        space: ['"Orbitron"', 'sans-serif']
+                    }
+                }
+            }
+        }
+    </script>
+    
+    <!-- 自定义样式 -->
+    <style>
+        /* 基础动画 */
+        .feature-card {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .feature-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px -5px rgba(59, 130, 246, 0.2);
+        }
+        .text-glow {
+            text-shadow: 0 0 8px rgba(59, 130, 246, 0.6);
+        }
+        /* 星空背景 */
+        .star {
+            position: absolute;
+            background-color: white;
+            border-radius: 50%;
+            animation: twinkle 2s infinite alternate;
+        }
+        @keyframes twinkle {
+            from { opacity: 0.3; }
+            to { opacity: 1; }
+        }
+        /* 页面加载 */
+        body {
+            opacity: 0;
+            transition: opacity 1s ease-in-out;
+        }
+        body.loaded {
+            opacity: 1;
+        }
+    </style>
+</head>
+
+<body class="bg-space-dark text-white min-h-screen flex flex-col">
+    <!-- 动态星空背景 -->
+    <div id="stars" class="fixed inset-0 z-0"></div>
+    <div class="fixed inset-0 bg-space-dark/85 backdrop-blur-[2px] z-0"></div>
+    
+    <!-- 导航栏 -->
+    <header class="sticky top-0 z-50 bg-space-dark/90 backdrop-blur-md border-b border-space-glow/30">
+        <div class="container mx-auto px-4 py-4 flex justify-between items-center">
+            <a href="index.html" class="flex items-center gap-2">
+                <i class="fa fa-star text-space-accent text-2xl"></i>
+                <span class="font-space font-bold text-xl">星尘考古</span>
+            </a>
+            <div class="flex gap-3">
+                <a href="index.html" class="flex items-center gap-1 px-3 py-2 rounded-lg bg-space-light/30 hover:bg-space-light/50 transition-colors">
+                    <i class="fa fa-home"></i>
+                    <span>首页</span>
+                </a>
+                <a href="project-info.html" class="flex items-center gap-1 px-3 py-2 rounded-lg bg-space-light/30 hover:bg-space-light/50 transition-colors">
+                    <i class="fa fa-info"></i>
+                    <span>项目详情</span>
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <!-- 主内容区 -->
+    <main class="container mx-auto px-4 py-12 flex-grow relative z-10">
+        <!-- 游戏标题 -->
+        <div class="text-center mb-12">
+            <h1 class="text-[clamp(2rem,5vw,3rem)] font-space font-bold mb-4 text-glow">星尘数据分析游戏</h1>
+            <div class="w-32 h-1 bg-space-accent mx-auto mb-6 rounded-full"></div>
+            <p class="text-lg text-gray-300 max-w-2xl mx-auto">
+                这不是普通的游戏——而是一场结合科学与探索的模拟任务。通过趣味互动，你将掌握天文学家分析宇宙数据的核心逻辑，
+                成为真正的"星尘侦探"。
+            </p>
+        </div>
+        
+        <!-- 游戏背景 -->
+        <section class="mb-16">
+            <div class="max-w-3xl mx-auto">
+                <h2 class="text-2xl md:text-3xl font-space font-bold mb-6 flex items-center gap-3">
+                    <i class="fa fa-universe text-space-accent"></i>
+                    游戏背景
+                </h2>
+                <div class="bg-space-dark/50 border border-space-glow/20 rounded-xl p-6 md:p-8">
+                    <p class="text-gray-300 leading-relaxed mb-4">
+                        在遥远的银河系边缘，天文学家发现了一批疑似"宇宙遗迹"的异常信号。这些信号隐藏在行星光谱、恒星运动轨迹和星际物质数据中，
+                        传统分析方法需要耗费大量时间。
+                    </p>
+                    <p class="text-gray-300 leading-relaxed">
+                        你的任务是通过一系列数据小游戏，从复杂的天文数据中提取关键线索，标记潜在的遗迹信号。每一次正确分析，
+                        都会让人类离解开宇宙文明之谜更近一步。
+                    </p>
+                </div>
+            </div>
+        </section>
+        
+        <!-- 核心玩法 -->
+        <section class="mb-16">
+            <div class="max-w-4xl mx-auto">
+                <h2 class="text-2xl md:text-3xl font-space font-bold mb-8 flex items-center gap-3 text-center justify-center">
+                    <i class="fa fa-gamepad text-space-accent"></i>
+                    核心玩法
+                </h2>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <!-- 玩法1 -->
+                    <div class="feature-card bg-space-dark/50 border border-space-glow/20 rounded-xl p-6">
+                        <div class="w-12 h-12 rounded-full bg-space-accent/20 flex items-center justify-center mb-4">
+                            <i class="fa fa-bar-chart text-space-accent text-xl"></i>
+                        </div>
+                        <h3 class="font-space font-bold text-xl mb-3">光谱匹配挑战</h3>
+                        <p class="text-gray-300 text-sm">
+                            对比目标行星的大气光谱与候选光谱，找出最相似的匹配项。不同大气成分（如水、氧气）会形成独特的光谱特征，
+                            是判断行星是否宜居的关键线索。
+                        </p>
+                    </div>
+                    
+                    <!-- 玩法2 -->
+                    <div class="feature-card bg-space-dark/50 border border-space-glow/20 rounded-xl p-6">
+                        <div class="w-12 h-12 rounded-full bg-space-accent/20 flex items-center justify-center mb-4">
+                            <i class="fa fa-signal text-space-accent text-xl"></i>
+                        </div>
+                        <h3 class="font-space font-bold text-xl mb-3">信号降噪任务</h3>
+                        <p class="text-gray-300 text-sm">
+                            从宇宙背景噪音中分离出疑似人工信号。模拟射电望远镜数据处理过程，通过调整滤波参数，
+                            还原可能的"遗迹通讯信号"。
+                        </p>
+                    </div>
+                    
+                    <!-- 玩法3 -->
+                    <div class="feature-card bg-space-dark/50 border border-space-glow/20 rounded-xl p-6">
+                        <div class="w-12 h-12 rounded-full bg-space-accent/20 flex items-center justify-center mb-4">
+                            <i class="fa fa-map-marker text-space-accent text-xl"></i>
+                        </div>
+                        <h3 class="font-space font-bold text-xl mb-3">星图坐标解密</h3>
+                        根据古代星图碎片的提示，在3D星图中定位对应的恒星系统。考验空间坐标转换能力，
+                        解锁隐藏的遗迹位置信息。
+                    </div>
+                    
+                    <!-- 玩法4 -->
+                    <div class="feature-card bg-space-dark/50 border border-space-glow/20 rounded-xl p-6">
+                        <div class="w-12 h-12 rounded-full bg-space-accent/20 flex items-center justify-center mb-4">
+                            <i class="fa fa-puzzle-piece text-space-accent text-xl"></i>
+                        </div>
+                        <h3 class="font-space font-bold text-xl mb-3">数据拼图合成</h3>
+                        <p class="text-gray-300 text-sm">
+                            将碎片化的行星表面数据（如陨石坑分布、地质结构）拼接完整，识别可能的人工改造痕迹，
+                            还原遗迹的原始形态。
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- 科学意义 -->
+        <section class="mb-16">
+            <div class="max-w-3xl mx-auto">
+                <h2 class="text-2xl md:text-3xl font-space font-bold mb-6 flex items-center gap-3">
+                    <i class="fa fa-flask text-space-accent"></i>
+                    科学意义
+                </h2>
+                <div class="bg-space-dark/50 border border-space-glow/20 rounded-xl p-6 md:p-8">
+                    <ul class="space-y-4 text-gray-300">
+                        <li class="flex items-start gap-3">
+                            <i class="fa fa-check-circle text-space-accent mt-1"></i>
+                            <span>了解天文数据的分析逻辑：光谱、信号、坐标等核心概念不再抽象</span>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <i class="fa fa-check-circle text-space-accent mt-1"></i>
+                            <span>体验"公民科学"的价值：模拟真实科研中"众包分析"的工作模式</span>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <i class="fa fa-check-circle text-space-accent mt-1"></i>
+                            <span>培养数据敏感度：学会从复杂信息中提取关键特征，锻炼逻辑思维</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+        
+        <!-- 开始游戏按钮 -->
+        <div class="text-center">
+            <a href="game.html" class="inline-block px-8 py-4 bg-space-accent text-white font-space font-bold rounded-lg hover:bg-space-accent/80 transition-all transform hover:scale-105">
+                <i class="fa fa-rocket mr-2"></i>开始数据分析任务
+            </a>
+            <p class="text-gray-400 text-sm mt-4">提示：完成所有游戏可解锁AI生成的"宇宙遗迹报告"</p>
+        </div>
+    </main>
+
+    <!-- 页脚 -->
+    <footer class="mt-16 py-6 border-t border-space-glow/30 relative z-10">
+        <div class="container mx-auto px-4 text-center text-gray-400 text-sm">
+            <p>星尘数据分析游戏 © 星尘考古项目 | 游戏设计基于真实天文数据分析原理</p>
+        </div>
+    </footer>
+
+    <script>
+        // 生成动态星空背景
+        function createStars() {
+            const starsContainer = document.getElementById('stars');
+            const starCount = 180;
+            
+            for (let i = 0; i < starCount; i++) {
+                const star = document.createElement('div');
+                star.classList.add('star');
+                star.style.left = `${Math.random() * 100}%`;
+                star.style.top = `${Math.random() * 100}%`;
+                star.style.width = `${Math.random() * 2 + 0.5}px`;
+                star.style.height = `${Math.random() * 2 + 0.5}px`;
+                star.style.animationDelay = `${Math.random() * 3}s`;
+                starsContainer.appendChild(star);
+            }
+        }
+
+        // 页面加载完成
+        window.addEventListener('load', () => {
+            document.body.classList.add('loaded');
+            createStars();
+        });
+    </script>
+</body>
+</html>
