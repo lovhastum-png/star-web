@@ -1,0 +1,79 @@
+﻿<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <title>星旅者 · 科学小游戏</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+  <a href="index.html" class="back-link">← 返回首页</a>
+
+  <div class="page-wrapper">
+    <main class="page-main">
+      <div class="card">
+        <h2>科学小游戏 · 光谱小测试</h2>
+        <p>
+          这里是一个非常简单的示例小游戏，用来占位，将来你可以替换为自己设计的交互。
+        </p>
+        <p>
+          假设你正在观测一颗系外行星的大气光谱，发现其中有明显的水蒸气吸收线，
+          同时出现少量氧气和二氧化碳吸收特征。
+        </p>
+
+        <p><strong>问题：你认为这颗行星的宜居可能性如何？</strong></p>
+
+        <form id="quizForm">
+          <label>
+            <input type="radio" name="level" value="high" />
+            较高：有水、有氧气，可能存在生命。
+          </label><br />
+          <label>
+            <input type="radio" name="level" value="medium" />
+            中等：有一定潜力，但还需要更多数据。
+          </label><br />
+          <label>
+            <input type="radio" name="level" value="low" />
+            较低：这些特征不足以说明宜居。
+          </label><br /><br />
+
+          <button type="submit" class="core-button">
+            提交答案
+          </button>
+        </form>
+
+        <p id="quizResult" class="muted" style="margin-top:12px;"></p>
+
+        <p class="muted" style="margin-top:16px;">
+          提示：你可以把这个小游戏扩展成多题、计分制，再加一个「查看报告」按钮，
+          跳转到星图或详情页面。
+        </p>
+      </div>
+    </main>
+  </div>
+
+  <script>
+    const form = document.getElementById('quizForm');
+    const result = document.getElementById('quizResult');
+
+    form.addEventListener('submit', function (e) {
+      e.preventDefault();
+      const data = new FormData(form);
+      const value = data.get('level');
+
+      if (!value) {
+        result.textContent = '请先选择一个选项哦。';
+        return;
+      }
+
+      if (value === 'high') {
+        result.textContent = '你的判断偏乐观，适合作为科幻故事的出发点～';
+      } else if (value === 'medium') {
+        result.textContent = '你的判断比较谨慎，符合科学思维。';
+      } else {
+        result.textContent = '你的判断偏保守，可以在报告里讨论不确定性。';
+      }
+    });
+  </script>
+</body>
+</html>
