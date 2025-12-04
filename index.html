@@ -1,0 +1,51 @@
+﻿<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <title>星旅者 · 星际考古实验室</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- Sci-fi 字体：Orbitron -->
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700&display=swap" rel="stylesheet" />
+
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body class="home">
+  <!-- 银河静态背景层 -->
+  <div class="home-bg"></div>
+
+  <!-- 星星闪烁特效（透明 Canvas 叠加在背景上） -->
+  <canvas id="home-stars" class="home-stars-layer"></canvas>
+
+  <div class="home-layout">
+    <!-- 顶部：星旅者标题区域 -->
+    <header class="home-header">
+      <div class="home-logo">星旅者</div>
+      <div class="home-subtitle">STAR TRAVELER · DEEP SPACE ARCHIVE LAB</div>
+    </header>
+
+    <!-- 三个入口：左 / 中 / 右，整体下移一些 -->
+    <main class="home-main">
+      <nav class="nav-row">
+        <a href="starmap.html" class="nav-pill">
+          <h2>星图探索</h2>
+          <p>沿着银河航道前进，锁定一颗恒星，开启旅程。</p>
+        </a>
+        <a href="game.html" class="nav-pill">
+          <h2>观测实验</h2>
+          <p>进入观测舱，完成一次深空观测与数据判读。</p>
+        </a>
+        <a href="detail.html" class="nav-pill">
+          <h2>档案馆</h2>
+          <p>翻开星际档案，回顾每一次发现与任务记录。</p>
+        </a>
+      </nav>
+    </main>
+  </div>
+
+  <!-- 首页星星闪烁特效脚本 -->
+  <script src="js/home-stars.js"></script>
+</body>
+</html>
+
+
